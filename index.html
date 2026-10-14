@@ -1,3 +1,8 @@
+Here is the updated HTML with a stylish cryptocurrency donation box added below the "How it works" section and before the footer.
+
+### The Code
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,11 +66,53 @@
     background: var(--accent); color: #fff; border-radius: 50%; font-weight: 700; margin-bottom: 12px;
   }
 
-  .cta {
-    background: var(--ink); color: #fff; border-radius: 20px;
-    text-align: center; padding: 56px 24px;
+  /* --- New Donation Box Styles --- */
+  .donation-box {
+    max-width: 600px;
+    margin: 48px auto 0;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   }
-  .cta p { color: #b8b8bd; margin: 12px 0 24px; }
+  .donation-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .donation-box p {
+    color: var(--muted);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+  }
+  .wallet-display {
+    background: #f8fafc;
+    border: 1px dashed var(--line);
+    padding: 16px;
+    border-radius: 12px;
+    font-family: monospace;
+    color: var(--accent);
+    word-break: break-all;
+    margin-bottom: 16px;
+    display: inline-block;
+    position: relative;
+  }
+  .wallet-display::after {
+    content: "Copy";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .wallet-display::after:hover { opacity: 0.9; }
 
   footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0; color: var(--muted); font-size: 0.9rem; }
   footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
@@ -120,6 +167,21 @@
         <div class="card"><h3>Select</h3><p>Add your items to the cart and choose your preferred method.</p></div>
         <div class="card"><h3>Download</h3><p>Get your files instantly and re-download any time.</p></div>
       </div>
+
+      <!-- New Donation Box -->
+      <div class="donation-box">
+        <h3>Support the Market</h3>
+        <p>Coffee keeps us caffeinated. Send a voluntary donation to keep MilkMarket running.</p>
+        
+        <div class="wallet-display" id="crypto-wallet">
+          0x1234...ABCD (Placeholder)
+        </div>
+        <small style="color: var(--muted); display:block; margin-top:8px;">(Ethereum / Bitcoin / Solana)</small>
+
+        <p style="margin-top: 16px; font-size: 0.9rem;">
+          Transactions are public on the blockchain, but your identity remains private unless you choose to share it.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -136,3 +198,4 @@
 
 </body>
 </html>
+```
