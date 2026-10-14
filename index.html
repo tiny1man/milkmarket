@@ -105,15 +105,67 @@
     padding: 2px 6px;
     border-radius: 4px;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, transform 0.2s;
   }
-  .wallet-display::after:hover { opacity: 0.9; }
+  .wallet-display::after:hover { 
+    opacity: 0.9; 
+    transform: scale(1.05);
+  }
 
   footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0; color: var(--muted); font-size: 0.9rem; }
   footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 
   @media (max-width: 560px) { nav ul { display: none; } }
 </style>
+<script>
+  // --- Copy to Clipboard Functionality ---
+  document.addEventListener('DOMContentLoaded', function() {
+    const walletDisplay = document.getElementById('crypto-wallet');
+    
+    if (walletDisplay && walletDisplay.querySelector('.wallet-display::after')) {
+      // Get the actual element for the pseudo-element content
+      const copyBtn = walletDisplay.querySelector('.wallet-display::after');
+      
+      // Create a real button element to handle click events
+      const realCopyBtn = document.createElement('span');
+      realCopyBtn.className = 'copy-btn';
+      realCopyBtn.style.cssText = `
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.7rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: opacity 0.2s, transform 0.2s;
+      `;
+      
+      // Get the wallet address text (from the pseudo-element content)
+      const walletAddress = 'bc1qvgwwhdn79nsu4lqj4s8y95kvjkpn97z8g95z5e';
+
+      realCopyBtn.textContent = 'Copy';
+      
+      // Insert before the pseudo-element
+      walletDisplay.insertBefore(realCopyBtn, walletDisplay.firstChild);
+      
+      realCopyBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText(walletAddress).then(function() {
+          this.textContent = 'Copied!';
+          
+          // Reset after 2 seconds
+          setTimeout(function() {
+            this.textContent = 'Copy';
+          }, 2000);
+        }).catch(function(err) {
+          console.error('Failed to copy: ', err);
+          this.textContent = 'Error';
+        });
+      });
+    }
+  });
+</script>
 </head>
 <body>
 
@@ -169,9 +221,9 @@
         <p>Coffee keeps us caffeinated. Send a voluntary donation to keep MilkMarket running.</p>
         
         <div class="wallet-display" id="crypto-wallet">
-          0x1234...ABCD (Placeholder)
+          bc1qvgwwhdn79nsu4lqj4s8y95kvjkpn97z8g95z5e
         </div>
-        <small style="color: var(--muted); display:block; margin-top:8px;">(Ethereum / Bitcoin / Solana)</small>
+        <small style="color: var(--muted); display:block; margin-top:8px;">(Bitcoin)</small>
 
         <p style="margin-top: 16px; font-size: 0.9rem;">
           Transactions are public on the blockchain, but your identity remains private unless you choose to share it.
