@@ -61,7 +61,7 @@
     background: var(--accent); color: #fff; border-radius: 50%; font-weight: 700; margin-bottom: 12px;
   }
 
-  /* --- New Donation Box Styles --- */
+  /* --- Donation Box Styles (Cleaned Up) --- */
   .donation-box {
     max-width: 600px;
     margin: 48px auto 0;
@@ -92,24 +92,6 @@
     word-break: break-all;
     margin-bottom: 16px;
     display: inline-block;
-    position: relative;
-  }
-  .wallet-display::after {
-    content: "Copy";
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: var(--accent);
-    color: #fff;
-    font-size: 0.7rem;
-    padding: 2px 6px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .wallet-display::after:hover { 
-    opacity: 0.9; 
-    transform: scale(1.05);
   }
 
   footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0; color: var(--muted); font-size: 0.9rem; }
@@ -117,55 +99,6 @@
 
   @media (max-width: 560px) { nav ul { display: none; } }
 </style>
-<script>
-  // --- Copy to Clipboard Functionality ---
-  document.addEventListener('DOMContentLoaded', function() {
-    const walletDisplay = document.getElementById('crypto-wallet');
-    
-    if (walletDisplay && walletDisplay.querySelector('.wallet-display::after')) {
-      // Get the actual element for the pseudo-element content
-      const copyBtn = walletDisplay.querySelector('.wallet-display::after');
-      
-      // Create a real button element to handle click events
-      const realCopyBtn = document.createElement('span');
-      realCopyBtn.className = 'copy-btn';
-      realCopyBtn.style.cssText = `
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        background: var(--accent);
-        color: #fff;
-        font-size: 0.7rem;
-        padding: 2px 6px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: opacity 0.2s, transform 0.2s;
-      `;
-      
-      // Get the wallet address text (from the pseudo-element content)
-      const walletAddress = 'bc1qvgwwhdn79nsu4lqj4s8y95kvjkpn97z8g95z5e';
-
-      realCopyBtn.textContent = 'Copy';
-      
-      // Insert before the pseudo-element
-      walletDisplay.insertBefore(realCopyBtn, walletDisplay.firstChild);
-      
-      realCopyBtn.addEventListener('click', function() {
-        navigator.clipboard.writeText(walletAddress).then(function() {
-          this.textContent = 'Copied!';
-          
-          // Reset after 2 seconds
-          setTimeout(function() {
-            this.textContent = 'Copy';
-          }, 2000);
-        }).catch(function(err) {
-          console.error('Failed to copy: ', err);
-          this.textContent = 'Error';
-        });
-      });
-    }
-  });
-</script>
 </head>
 <body>
 
@@ -214,8 +147,7 @@
         <div class="card"><h3>Select</h3><p>Add your items to the cart and choose your preferred method.</p></div>
         <div class="card"><h3>Download</h3><p>Get your files instantly and re-download any time.</p></div>
       </div>
-<br>
-  <br>
+
       <!-- New Donation Box -->
       <div class="donation-box">
         <h3>Support the Market</h3>
