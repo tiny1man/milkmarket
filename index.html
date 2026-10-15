@@ -119,13 +119,14 @@
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, transform 0.2s;
   }
   .copy-btn:hover {
     opacity: 0.9;
+    transform: scale(1.05);
   }
 
-  /* --- Featured Section (Vertical Layout) --- */
+  /* --- Featured Section (Vertical Layout with Hover Effects) --- */
   .featured-section {
     background: var(--bg);
     padding: 64px 0;
@@ -146,6 +147,12 @@
     text-align: center;
     width: 100%;
     max-width: 500px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .featured-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(47, 111, 237, 0.2);
+    border-color: var(--accent);
   }
 
   footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0; color: var(--muted); font-size: 0.9rem; }
@@ -162,7 +169,7 @@
 <script>
   // --- Copy to Clipboard Functionality ---
   document.addEventListener('DOMContentLoaded', function() {
-    const walletAddress = 'bc1qvgwwhdn79nsu4lqj4s8y95kvjkpn97z8g95z5e';
+    const walletAddress = '446ZpsdrjRqLiy36wmZhMNKvnk4i7wZZRYK5nwyagtAxEnprvsH9Jd2DNMqoPyspa39PPL5g5H3YcM4pzVgdYnV2CEcAsrE';
     
     // Find the copy button and add click handler
     const copyBtn = document.querySelector('.copy-btn');
@@ -237,7 +244,7 @@
         
         <div class="donation-box">
           <h3>Support the Market</h3>
-          <p>Coffee keeps us caffeinated. Send a voluntary donation to keep MilkMarket running.</p>
+          <p>If this helped you, consider donating. Send a voluntary donation to keep MilkMarket running.</p>
           
           <div class="wallet-container">
             <div class="wallet-display" id="crypto-wallet">
