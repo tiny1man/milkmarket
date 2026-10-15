@@ -14,157 +14,183 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Milk Market – Digital Goods</title>
       <link rel="icon" type="image/png" href="favicon.png">
+      <link rel="stylesheet" href="style.css">
 <style>
-  :root {
-    --bg: #fdfbf7;
-    --ink: #1c1c1e;
-    --muted: #6b6b70;
-    --accent: #2f6fed;
-    --card: #ffffff;
-    --line: #e8e4db;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    line-height: 1.6;
-  }
-  a { color: inherit; text-decoration: none; }
-  .container { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+:root {
+  --bg: #fdfbf7;
+  --ink: #1c1c1e;
+  --muted: #6b6b70;
+  --accent: #2f6fed;
+  --card: #ffffff;
+  --line: #e8e4db;
+}
 
-  header { border-bottom: 1px solid var(--line); }
-  nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
-  .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
-  .logo span { color: var(--accent); }
-  nav ul { display: flex; gap: 24px; list-style: none; font-size: 0.95rem; color: var(--muted); }
-  nav ul a:hover { color: var(--ink); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .hero { text-align: center; padding: 96px 0 80px; }
-  .hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.1; letter-spacing: -0.03em; }
-  .hero p { max-width: 540px; margin: 20px auto 32px; color: var(--muted); font-size: 1.1rem; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
 
-  section { padding: 64px 0; }
-  h2 { font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 8px; }
-  .sub { color: var(--muted); margin-bottom: 36px; }
+a { color: inherit; text-decoration: none; }
 
-  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  
-  /* Product Cards - Clickable */
-  .card.product-card {
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: 14px; padding: 24px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-  }
-  .card.product-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(47, 111, 237, 0.15);
-    border-color: var(--accent);
-  }
+.container { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
 
-  /* Steps Cards - Not Clickable */
-  .steps { counter-reset: s; }
-  .steps .card::before {
-    counter-increment: s; content: counter(s);
-    display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center;
-    background: var(--accent); color: #fff; border-radius: 50%; font-weight: 700; margin-bottom: 12px;
-  }
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+header { border-bottom: 1px solid var(--line); }
+nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+.logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+nav ul { display: flex; gap: 24px; list-style: none; font-size: 0.95rem; color: var(--muted); }
+nav ul a:hover { color: var(--ink); }
 
-  /* --- Donation Box Styles (Enhanced) --- */
-  .donation-box {
-    max-width: 600px;
-    margin: 48px auto 0;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 32px;
-    text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  }
-  .donation-box h3 {
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-    color: var(--ink);
-  }
-  .donation-box p {
-    color: var(--muted);
-    margin-bottom: 24px;
-    font-size: 0.95rem;
-  }
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero { text-align: center; padding: 96px 0 80px; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.1; letter-spacing: -0.03em; }
+.hero p { max-width: 540px; margin: 20px auto 32px; color: var(--muted); font-size: 1.1rem; }
+
+/* ============================================
+   SECTIONS & TYPOGRAPHY
+   ============================================ */
+section { padding: 64px 0; }
+h2 { font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 8px; }
+.sub { color: var(--muted); margin-bottom: 36px; }
+
+/* ============================================
+   GRID LAYOUTS
+   ============================================ */
+.grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* ============================================
+   PRODUCT CARDS (Clickable)
+   ============================================ */
+.card.product-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 14px; padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.card.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(47, 111, 237, 0.15);
+  border-color: var(--accent);
+}
+
+/* ============================================
+   STEPS CARDS (Non-Clickable)
+   ============================================ */
+.steps { counter-reset: s; }
+.steps .card::before {
+  counter-increment: s; content: counter(s);
+  display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff; border-radius: 50%; font-weight: 700; margin-bottom: 12px;
+}
+
+/* ============================================
+   DONATION BOX (Enhanced)
+   ============================================ */
+.donation-box {
+  max-width: 600px;
+  margin: 48px auto 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.donation-box h3 { font-size: 1.5rem; margin-bottom: 8px; color: var(--ink); }
+.donation-box p { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
+
+.wallet-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.wallet-display {
+  background: #f8fafc;
+  border: 1px dashed var(--line);
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-family: monospace;
+  color: var(--accent);
+  word-break: break-all;
+  flex-grow: 1;
+  min-width: 0;
+}
+.copy-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.copy-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* ============================================
+   FEATURED SECTION (Vertical Portrait Layout)
+   ============================================ */
+.featured-section { background: var(--bg); padding: 64px 0; }
+.featured-grid {
+  display: flex; 
+  flex-direction: column;
+  gap: 24px; 
+  max-width: 1040px;
+  margin: 0 auto;
+  align-items: center;
+}
+.featured-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 520px;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.featured-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 32px rgba(47, 111, 237, 0.25);
+  border-color: var(--accent);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0; color: var(--muted); font-size: 0.9rem; }
+footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+/* ============================================
+   RESPONSIVE DESIGN (Mobile)
+   ============================================ */
+@media (max-width: 560px) { 
+  nav ul { display: none; } 
   .wallet-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-  }
-  .wallet-display {
-    background: #f8fafc;
-    border: 1px dashed var(--line);
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-family: monospace;
-    color: var(--accent);
-    word-break: break-all;
-    flex-grow: 1;
-    min-width: 0; /* Prevents overflow */
-  }
-  .copy-btn {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .copy-btn:hover {
-    opacity: 0.9;
-    transform: scale(1.05);
-  }
-
-  /* --- Featured Section (Vertical Layout with Hover Effects) --- */
-  .featured-section {
-    background: var(--bg);
-    padding: 64px 0;
-  }
-  .featured-grid {
-    display: flex; 
     flex-direction: column;
-    gap: 20px; 
-    max-width: 1040px;
-    margin: 0 auto;
-    align-items: center;
+    align-items: stretch;
   }
-  .featured-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 24px;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .featured-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(47, 111, 237, 0.2);
-    border-color: var(--accent);
-  }
+}
 
-  footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0; color: var(--muted); font-size: 0.9rem; }
-  footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-
-  @media (max-width: 560px) { 
-    nav ul { display: none; } 
-    .wallet-container {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  }
 </style>
 <script>
   // --- Copy to Clipboard Functionality ---
