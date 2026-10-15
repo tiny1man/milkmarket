@@ -71,7 +71,7 @@
     background: var(--accent); color: #fff; border-radius: 50%; font-weight: 700; margin-bottom: 12px;
   }
 
-  /* --- Donation Box Styles (Cleaned Up) --- */
+  /* --- Donation Box Styles (Enhanced) --- */
   .donation-box {
     max-width: 600px;
     margin: 48px auto 0;
@@ -92,23 +92,122 @@
     margin-bottom: 24px;
     font-size: 0.95rem;
   }
+  .wallet-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
   .wallet-display {
     background: #f8fafc;
     border: 1px dashed var(--line);
-    padding: 16px;
+    padding: 12px 16px;
     border-radius: 12px;
     font-family: monospace;
     color: var(--accent);
     word-break: break-all;
+    flex-grow: 1;
+    min-width: 0; /* Prevents overflow */
+  }
+  .copy-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+  }
+  .copy-btn:hover {
+    opacity: 0.9;
+  }
+
+  /* --- Reviews Section --- */
+  .reviews-section {
+    background: var(--bg);
+    padding: 64px 0;
+  }
+  .review-grid {
+    display: grid; 
+    gap: 20px; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .review-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .review-text {
+    font-style: italic;
     margin-bottom: 16px;
-    display: inline-block;
+    color: var(--ink);
+  }
+  .review-author {
+    text-align: right;
+    color: var(--muted);
+  }
+
+  /* --- Featured Section --- */
+  .featured-section {
+    background: var(--bg);
+    padding: 64px 0;
+  }
+  .featured-grid {
+    display: grid; 
+    gap: 20px; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .featured-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
   }
 
   footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0; color: var(--muted); font-size: 0.9rem; }
   footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 
-  @media (max-width: 560px) { nav ul { display: none; } }
+  @media (max-width: 560px) { 
+    nav ul { display: none; } 
+    .wallet-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
 </style>
+<script>
+  // --- Copy to Clipboard Functionality ---
+  document.addEventListener('DOMContentLoaded', function() {
+    const walletAddress = 'bc1qvgwwhdn79nsu4lqj4s8y95kvjkpn97z8g95z5e';
+    
+    // Find the copy button and add click handler
+    const copyBtn = document.querySelector('.copy-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText(walletAddress).then(function() {
+          const originalText = this.textContent;
+          this.textContent = 'Copied!';
+          
+          // Reset after 2 seconds
+          setTimeout(() => {
+            this.textContent = originalText;
+          }, 2000);
+        }).catch(function(err) {
+          console.error('Failed to copy: ', err);
+        });
+      });
+    }
+  });
+</script>
 </head>
 <body>
 
@@ -157,23 +256,69 @@
         <div class="card"><h3>Select</h3><p>Open the page contaning your media.</p></div>
         <div class="card"><h3>Download</h3><p>Get your files instantly and re-download any time.</p></div>
       </div>
-<br>
-      <br>
-      <br>
-      <br>
-      <!-- New Donation Box -->
-      <div class="donation-box">
-        <h3>Support the Market</h3>
-        <p>Coffee keeps us caffeinated. Send a voluntary donation to keep MilkMarket running.</p>
-        
-        <div class="wallet-display" id="crypto-wallet">
-          bc1qvgwwhdn79nsu4lqj4s8y95kvjkpn97z8g95z5e
-        </div>
-        <small style="color: var(--muted); display:block; margin-top:8px;">(Bitcoin)</small>
 
-        <p style="margin-top: 16px; font-size: 0.9rem;">
-          Transactions are public on the blockchain, but your identity remains private unless you choose to share it.
-        </p>
+      <!-- New Donation Box -->
+      <div style="text-align:center; margin-top: 40px;">
+        <p style="color: var(--muted); font-size: 1.1rem;">If this helped you, consider donating</p>
+        
+        <div class="donation-box">
+          <h3>Support the Market</h3>
+          <p>Coffee keeps us caffeinated. Send a voluntary donation to keep MilkMarket running.</p>
+          
+          <div class="wallet-container">
+            <div class="wallet-display" id="crypto-wallet">
+              bc1qvgwwhdn79nsu4lqj4s8y95kvjkpn97z8g95z5e
+            </div>
+            <button class="copy-btn">Copy</button>
+          </div>
+          
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f8fafc'/%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23e8e4db' stroke-width='2' fill='none'/%3E%3Crect x='45' y='45' width='10' height='10' fill='%232f6fed'/%3E%3C/svg%3E" 
+                alt="QR Code" style="width: 100px; height: 100px; border-radius: 8px;" />
+          
+          <small style="color: var(--muted); display:block; margin-top:8px;">(Bitcoin)</small>
+
+          <p style="margin-top: 16px; font-size: 0.9rem;">
+            Transactions are public on the blockchain, but your identity remains private unless you choose to share it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Section -->
+  <section class="featured-section">
+    <div class="container">
+      <h2>Featured</h2>
+      <p class="sub">Best archival links.</p>
+      
+      <div class="featured-grid">
+        <a href="#" class="featured-card">Featured Link #1</a>
+        <a href="#" class="featured-card">Featured Link #2</a>
+        <a href="#" class="featured-card">Featured Link #3</a>
+        <a href="#" class="featured-card">Featured Link #4</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews-section">
+    <div class="container">
+      <h2>What People Say</h2>
+      <p class="sub">Hear from our community.</p>
+      
+      <div class="review-grid">
+        <div class="review-card">
+          <p class="review-text">"This is exactly what I needed for my research project. So much great content in one place!"</p>
+          <p class="review-author">- Alex R.</p>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"I've saved hours of searching thanks to MilkMarket's curated collections."</p>
+          <p class="review-author">- Sam T.</p>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"The interface is clean, the archives are fantastic. Highly recommended!"</p>
+          <p class="review-author">- Jordan M.</p>
+        </div>
       </div>
     </div>
   </section>
