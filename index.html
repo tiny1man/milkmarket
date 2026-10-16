@@ -126,34 +126,51 @@
     transform: scale(1.05);
   }
 
-  /* --- Featured Section (Vertical Layout with Hover Effects) --- */
-  .featured-section {
-    background: var(--bg);
-    padding: 64px 0;
-  }
-  .featured-grid {
-    display: flex; 
-    flex-direction: column;
-    gap: 20px; 
-    max-width: 1040px;
-    margin: 0 auto;
-    align-items: center;
-  }
-  .featured-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 24px;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .featured-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(47, 111, 237, 0.2);
-    border-color: var(--accent);
-  }
+ /* --- Featured Section (Portrait Cards with Hover Effects) --- */
+.featured-section {
+  background: var(--bg);
+  padding: 64px 0;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(47, 111, 237, 0.2);
+  border-color: var(--accent);
+}
+
+.featured-thumb {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.featured-title {
+  margin-top: 12px;
+  font-weight: 600;
+}
 
   footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0; color: var(--muted); font-size: 0.9rem; }
   footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
@@ -239,20 +256,34 @@
         <div class="card"><h3>Download</h3><p>Get your files instantly and re-download any time.</p></div>
       </div>
 
-  <!-- Featured Section -->
-  <section class="featured-section">
-    <div class="container">
-      <h2>Featured</h2>
-      <p class="sub">Hand-Picked archival links.</p>
-      
-      <div class="featured-grid">
-        <a href="https://archive.org/details/malware-pack" class="featured-card">Best Virus Pack</a>
-        <a href="https://archive.org/details/hazbin-hotel-season-1-sound-track" class="featured-card">Hazbin Hotel Soundtrack</a>
-        <a href="https://archive.org/details/apkarchive" class="featured-card">APK archive</a>
-        <a href="https://archive.org/details/youtubecrawl2007" class="featured-card">Vintage Youtube</a>
-      </div>
+<!-- Featured Section -->
+<section class="featured-section">
+  <div class="container">
+    <h2>Featured</h2>
+    <p class="sub">Hand-Picked archival links.</p>
+
+    <div class="featured-grid">
+      <a href="https://archive.org/details/malware-pack" class="featured-card">
+        <img src="https://placehold.co/300x400" alt="" class="featured-thumb">
+        <span class="featured-title">Best Virus Pack</span>
+      </a>
+      <a href="https://archive.org/details/hazbin-hotel-season-1-sound-track" class="featured-card">
+        <img src="https://placehold.co/300x400" alt="" class="featured-thumb">
+        <span class="featured-title">Hazbin Hotel Soundtrack</span>
+      </a>
+      <a href="https://archive.org/details/apkarchive" class="featured-card">
+        <img src="https://placehold.co/300x400" alt="" class="featured-thumb">
+        <span class="featured-title">APK archive</span>
+      </a>
+      <a href="https://archive.org/details/youtubecrawl2007" class="featured-card">
+        <img src="https://placehold.co/300x400" alt="" class="featured-thumb">
+        <span class="featured-title">Vintage Youtube</span>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
+
+          
 <!-- New Donation Box -->
 <div style="text-align:center; margin-top: 40px;">
 
