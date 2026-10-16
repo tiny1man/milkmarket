@@ -255,30 +255,16 @@
   </section>
           
       <!-- New Donation Box -->
-      <div style="text-align:center; margin-top: 40px;">
-        
-        <div class="donation-box">
-          <h3>Support the Market</h3>
-          <p>If this helped you, consider donating. Send a voluntary donation to keep MilkMarket running.</p>
-          
-          <div class="wallet-container">
-            <div class="wallet-display" id="crypto-wallet">
-              446ZpsdrjRqLiy36wmZhMNKvnk4i7wZZRYK5nwyagtAxEnprvsH9Jd2DNMqoPyspa39PPL5g5H3YcM4pzVgdYnV2CEcAsrE
-            </div>
-            <button class="copy-btn">Copy</button>
-          </div>
-          
-         <img src="wallet.png" alt="QR Code" style="width: 100px; height: 100px; border-radius: 8px;" />
-          
-          <small style="color: var(--muted); display:block; margin-top:8px;">(Monero / XMR)</small>
-
-          <p style="margin-top: 16px; font-size: 0.9rem;">
-            Transactions are public on the blockchain, but your identity remains private unless you choose to share it.
-          </p>
-        </div>
-      </div>
+<div style="display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
+  <div class="wallet-container">
+    <div class="wallet-display" id="crypto-wallet">
+      446ZpsdrjRqLiy36wmZhMNKvnk4i7wZZRYK5nwyagtAxEnprvsH9Jd2DNMqoPyspa39PPL5g5H3YcM4pzVgdYnV2CEcAsrE
     </div>
-  </section>
+    <button class="copy-btn" onclick="copyWallet(this)">Copy</button>
+  </div>
+
+  <img src="wallet.png" alt="QR Code" style="width: 100px; height: 100px; border-radius: 8px;" />
+</div>
 
   <!-- CTA Section Removed -->
   
